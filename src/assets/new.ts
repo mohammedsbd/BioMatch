@@ -25582,3 +25582,15 @@ export class HLAMatchingService {
 
     const matchScore = Math.round(totalScore / loci.length);
     const isHighRisk = matchScore < 60;
+
+    loci.forEach(locus => {
+      const score = HLAMatchingService.compareAlleles(recipient[locus], donor[locus]);
+      totalScore += score;
+
+      if (score < HLAMatchingService.PARTIAL_MATCH_SCORE) {
+        mismatchedLoci.push(locus.toUpperCase());
+      }
+    });
+
+    const matchScore = Math.round(totalScore / loci.length);
+    const isHighRisk = matchScore < 60;
