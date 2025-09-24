@@ -110,32 +110,3 @@ export function InfiniteSlider({
     </div>
   );
 }
-          setCurrentSpeed(speedOnHover);
-        },
-        onHoverEnd: () => {
-          setIsTransitioning(true);
-          setCurrentSpeed(speed);
-        },
-      }
-    : {};
-
-  return (
-    <div className={cn('overflow-hidden', className)}>
-      <motion.div
-        className='flex w-max'
-        style={{
-          ...(direction === 'horizontal'
-            ? { x: translation }
-            : { y: translation }),
-          gap: `${gap}px`,
-          flexDirection: direction === 'horizontal' ? 'row' : 'column',
-        }}
-        ref={ref}
-        {...hoverProps}
-      >
-        {children}
-        {children}
-      </motion.div>
-    </div>
-  );
-}
